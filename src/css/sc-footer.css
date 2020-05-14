@@ -1,0 +1,103 @@
+.sc-footer {
+    height: 175px;
+    padding: 3em 0;
+    font-weight: 500;
+    position: absolute;
+    transition: all .2s var(--easing);
+    background-color: var(--primary-color-dark);
+    color: rgba(255,255,255,0.7);
+    box-sizing: border-box;
+    overflow: hidden;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.sc-footer .navigation {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sc-footer .navigation .navigation-items a {
+    color: #FFF;
+    text-decoration: none;
+    opacity: 0.6;
+    transition: all .4s var(--easing);
+    margin: 0 1.5em;
+}
+
+.sc-footer .navigation a:hover {
+    opacity: 1;
+}
+
+.sc-footer .navigation .current-language {
+    padding: .5em 1em;
+    transition: all .4s var(--easing);
+}
+
+.sc-footer .navigation .current-language:hover {
+    text-decoration: none;
+    color: #FFF;
+}
+
+.sc-footer .navigation .current-language .country-flag {
+    margin: 0;
+}
+
+.sc-footer .navigation .social {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.sc-footer .navigation .social svg {
+    opacity: .6;
+    width: 24px;
+    height: 24px;
+    transition: all .4s var(--easing);
+    cursor: pointer;
+    margin-left: 1em;
+    background-position: center;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+}
+
+.sc-footer .navigation .social div:hover {
+    opacity: 1;
+}
+
+.sc-footer .navigation .social .twitter {
+    background-size: 40px;
+}
+.sc-footer .navigation .social .linkedin {
+    background-size: 24px;
+    width: 24px;
+    max-width: 24px;
+}
+
+.sc-footer .separator {
+    display: block;
+    height: 1px;
+    width: 300px;
+    background-color: #FFF;
+    opacity: 0.4;
+    margin: .5em auto;
+}
+
+.sc-footer .copy {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    max-width: 35%;
+    margin: 1.5em auto 0;
+    font-size: .7em;
+}
+
+.sc-footer .copy .footer-legal span {
+    cursor: pointer;
+    transition: color .4s var(--easing);
+}
+.sc-footer .copy .footer-legal span:hover {
+    color: #FFF;
+}

@@ -1,0 +1,32 @@
+#sc-page {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.index-header,
+.casestudy-header,
+.concept-header,
+.news-header,
+.events-header {
+    height: 400px;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    color: #FFF;
+
+    background-image: /* top, transparent red, faked with gradient */ linear-gradient(
+            rgba(43, 46, 55, 0.8),
+            rgba(43, 46, 55, 0.9)
+    ),
+    url('../assets/images/scala-mesh.jpg');
+
+    background-size: cover;
+    /*background-position: -25%;*/
+}
+
+.news-header {
+    height: 400px;
+    padding-top: 100px;
+}

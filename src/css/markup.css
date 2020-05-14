@@ -1,0 +1,58 @@
+.markup p {
+    margin-bottom: 1.5em;
+}
+
+.markup strong {
+    font-weight: 600;
+}
+
+.markup a {
+    color: var(--primary-color-bright)
+}
+
+.markup ol, .markup ul {
+    margin: 0.8em 3em 1.2em;
+    list-style: inherit;
+}
+
+.markup ol {
+    list-style-type: decimal
+}
+
+.markup ol li, .markup ul li {
+    padding-left: 0.5em;
+    margin-bottom: 0.2em;
+}
+
+.markup em {
+    font-style: italic;
+}
+
+.markup h1 {
+    font-size: 2em;
+    color: var(--primary-color-dark);
+    font-weight: 500;
+    margin-bottom: 0.3em;
+}
+
+.markup h2 {
+    font-size: 1.7em;
+    color: var(--primary-color-dark);
+    font-weight: 500;
+    margin-bottom: 0.3em;
+}
+
+.markup h3 {
+    font-size: 1.4em;
+    color: var(--primary-color-dark);
+    font-weight: 500;
+    margin-bottom: 0.3em;
+}
+
+/*
+ * EXCEPTIONS
+ */
+
+.list .markup p {
+    margin-bottom: .5em;
+}

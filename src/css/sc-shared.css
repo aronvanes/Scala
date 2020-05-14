@@ -1,0 +1,240 @@
+.width-container {
+    width: 100%;
+    margin: auto;
+    box-sizing: border-box;
+    padding-left: 40px;
+    padding-right: 40px;
+    position: relative;
+}
+
+/*
+ * FONT PROPERTIES
+ */
+
+.font-size {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 1.6rem;
+    line-height: 2rem;
+    letter-spacing: .05rem;
+}
+
+.wide {
+    letter-spacing: .075em;
+}
+
+.light {
+    font-weight: 300
+}
+
+.light.medium {
+    font-weight: 200;
+}
+
+.light.heavy {
+    font-weight: 100;
+}
+
+.bold {
+    font-weight: 500;
+}
+
+.bold.medium {
+    font-weight: 600;
+}
+
+.bold.heavy {
+    font-weight: 700;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.white {
+    color: #FFF;
+}
+
+.scala-red {
+    color: var(--primary-color-bright);
+}
+
+.scala-shark {
+    color: var(--primary-color-dark);
+}
+
+/*
+ * CONTENT
+ */
+
+.column-gap-small {
+    -webkit-column-gap: 3em; /* Chrome, Safari, Opera */
+    -moz-column-gap: 3em; /* Firefox */
+    column-gap: 3em;
+}
+.column-gap-medium {
+    -webkit-column-gap: 5em; /* Chrome, Safari, Opera */
+    -moz-column-gap: 5em; /* Firefox */
+    column-gap: 5em;
+}
+.column-gap-large {
+    -webkit-column-gap: 7em; /* Chrome, Safari, Opera */
+    -moz-column-gap: 7em; /* Firefox */
+    column-gap: 7em;
+}
+.column-count-2 {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+}
+.column-count-3 {
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
+}
+
+/*
+ * SHADOWS
+ */
+
+.drop-shadow {
+    box-shadow: 0 1em 2em rgba(0, 0, 0, 0.25);
+    transition: box-shadow .4s var(--easing);
+}
+
+.drop-shadow.low {
+    box-shadow: 0 .5em 1em rgba(0, 0, 0, 0.1);
+}
+
+.drop-shadow.high {
+    box-shadow: 0 1em 2em rgba(0, 0, 0, 0.25), 0 .5em .5em rgba(0, 0, 0, 0.22);
+}
+
+.drop-shadow.zero {
+    box-shadow: 0 0 2em rgba(0, 0, 0, 0.3);
+}
+
+.drop-shadow.zero:hover {
+    /*box-shadow: 0 0 3em rgba(0, 0, 0, 0.25), 0 0 3em rgba(0, 0, 0, 0.22);*/
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/*
+ * MISC
+ */
+
+.border-radius {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.br-small {
+    border-radius: 4px;
+}
+
+.fill-content {
+    flex: 1 0 auto;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                     supported by Chrome and Opera */
+}
+
+.clearfix::after{
+    content: '';
+    clear: both;
+    display: table;
+}
+
+/*
+ * SOCIAL
+ */
+.nav-item-social {
+    cursor: pointer;
+}
+.nav-item-social path {
+    opacity: .7;
+    transition: all .2s var(--easing);
+}
+
+.nav-item-social:hover path {
+    opacity: 1;
+    /*fill: blue !important;*/
+}
+
+.social .twitter {
+    background-size: 40px;
+    background-image: url("../assets/images/icon-twitter.svg");
+}
+.social .youtube {
+    background-image: url('../assets/images/icon-youtube.svg');
+}
+.social .facebook {
+    background-image: url('../assets/images/icon-facebook.svg');
+}
+.social .linkedin {
+    background-size: 24px;
+    width: 24px;
+    max-width: 24px;
+    background-image: url('../assets/images/icon-linkedin.svg');
+}
+
+/*
+ * CHEVRON
+ */
+
+.chevron {
+    width: 24px;
+    height: 24px;
+    position: relative;
+}
+
+.chevron::before, .chevron::after {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 2px;
+    height: 16px;
+    display: block;
+    content: "";
+    background-color: currentColor;
+    border-radius: 10px;
+    transition-property: transform;
+    transition-duration: .25s;
+    transition-timing-function:  var(--easing);
+
+}
+.chevron::before {
+    transform: rotate(-45deg);
+}
+
+.chevron::after {
+    transform: rotate(45deg);
+    top: 10px;
+}
+
+.chevron.active::before, .chevron.active::after {
+    top: 11px;
+    width: 16px;
+    height: 2px;
+}
+
+.chevron.active::before {
+    transform: rotate(45deg);
+    left: 0;
+}
+
+.chevron.active::after {
+    transform: rotate(-45deg);
+    left: 10px;
+}

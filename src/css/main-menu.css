@@ -1,0 +1,287 @@
+.main-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: all .2s var(--easing);
+    height: 80px;
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+}
+
+.main-menu.scrolling {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(0, 0, 0, .075));
+    box-shadow: 1px 1px 25px 0 rgba(0, 0, 0, .15);
+}
+
+.main-menu .nav {
+    position: absolute;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    transition: all .2s var(--easing);
+    align-items: center;
+    padding-top: 24px;
+}
+
+.main-menu .nav .nav-button {
+    color: #fff;
+    transition: all .6s var(--easing);
+    z-index: 100;
+    cursor: pointer;
+    position: relative;
+}
+
+.main-menu .nav .nav-button .button-text {
+    font-size: 1.8rem;
+    font-weight: 500;
+    padding-left: 5px;
+}
+
+.main-menu.scrolling .nav.visible .nav-button {
+    margin-right: 48px;
+}
+
+.main-menu .nav .divider {
+    margin: 0 1.5em;
+    height: 2em;
+    background: #FFF;
+    width: 1px;
+    transition: all .2s var(--easing);
+}
+
+.main-menu .nav .nav-list {
+    position: absolute;
+    transition: all .4s var(--easing);
+    top: 0;
+    padding: 64px 128px 88px;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    text-align: center;
+    width: auto;
+    overflow: hidden;
+    pointer-events: none;
+    height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: var(--primary-color-dark);
+}
+
+.main-menu .nav.visible .nav-list {
+    pointer-events: inherit;
+    text-align: center;
+}
+
+.main-menu .nav.visible .nav-list .nav-item {
+    margin: 1.5em auto;
+    position: relative;
+    width: fit-content;
+}
+
+.main-menu .nav .nav-list .nav-item a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    opacity: 0;
+    width: 148px;
+    position: relative;
+}
+
+.main-menu .nav .nav-list .nav-item a:hover {
+    font-weight: 500;
+}
+
+.main-menu .nav .nav-list .nav-item.social {
+    display: flex;
+    justify-content: center;
+    width: 148px;
+    animation-name: menuItemSlideIn;
+    animation-duration: 0.5s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    animation-timing-function: var(--easing);
+}
+
+.main-menu .nav .nav-list .nav-item.social div {
+    width: 20px;
+    height: 20px;
+    max-height: 20px;
+    max-width: 20px;
+    background-position: center;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    opacity: .7;
+    transition: all .3s var(--easing);
+    padding: 1em 0;
+    margin: 1em 6px;
+    display: block;
+    position: relative;
+}
+
+.main-menu .nav .nav-list .nav-item.social div:hover {
+    opacity: 1;
+}
+
+.main-menu .nav .nav-list .nav-item.social .twitter {
+    background-size: 40px;
+}
+.main-menu .nav .nav-list .nav-item.social .linkedin {
+    background-size: 24px;
+    width: 24px;
+    max-width: 24px;
+}
+
+.main-menu .nav.hidden .nav-list .nav-item a {
+    animation-name: menuItemSlideOut;
+    animation-duration: 0.4s;
+    animation-fill-mode: revert;
+    animation-delay: 0s !important;
+}
+
+.main-menu .nav.visible .nav-list .nav-item a {
+    animation-name: menuItemSlideIn;
+    animation-duration: 0.5s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    animation-timing-function: var(--easing);
+    width: 148px;
+}
+
+.main-menu .logo {
+    position: absolute;
+    left: calc(50% - 150px);
+    width: 300px;
+    text-align: center;
+    box-sizing: border-box;
+    height: 32px;
+    transition: all .2s var(--easing);
+    cursor: pointer;
+}
+
+.main-menu .logo img {
+    height: 100%;
+    margin: auto
+}
+
+.main-menu .contact-us {
+    overflow: visible;
+}
+
+@keyframes menuItemSlideIn {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes menuItemSlideOut {
+    100% {
+        opacity: 0;
+    }
+    0% {
+        opacity: 1;
+    }
+}
+
+.hamburger {
+    display: inline-block;
+    cursor: pointer;
+    transition-property: opacity, filter;
+    transition-duration: 0.15s;
+    transition-timing-function: linear;
+    font: inherit;
+    color: inherit;
+    text-transform: none;
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+    overflow: visible;
+}
+
+.hamburger:hover {
+    opacity: 0.7;
+}
+
+.hamburger.is-active:hover {
+    opacity: 0.7;
+}
+
+.hamburger.is-active .hamburger-inner,
+.hamburger.is-active .hamburger-inner::before,
+.hamburger.is-active .hamburger-inner::after {
+    background-color: currentColor;
+}
+
+.hamburger-box {
+    width: 28px;
+    height: 14px;
+    display: inline-block;
+    position: relative;
+}
+
+.hamburger-inner {
+    display: block;
+    top: 50%;
+    margin-top: -2px;
+}
+
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+    width: 24px;
+    height: 2px;
+    background-color: currentColor;
+    border-radius: 4px;
+    position: absolute;
+    transition-property: transform;
+    transition-duration: 0.25s;
+    transition-timing-function: var(--easing);
+}
+
+.hamburger-inner::before, .hamburger-inner::after {
+    content: "";
+    display: block;
+}
+
+.hamburger-inner::before {
+    top: -6px;
+}
+
+.hamburger-inner::after {
+    bottom: -6px;
+}
+
+/*
+   * Slider
+   */
+.hamburger--slider .hamburger-inner {
+    top: 2px;
+}
+
+.hamburger--slider .hamburger-inner::before {
+    top: 8px;
+    transition-property: transform, opacity;
+    transition-timing-function: ease;
+    transition-duration: 0.15s;
+}
+
+.hamburger--slider .hamburger-inner::after {
+    top: 16px;
+}
+
+.hamburger--slider.is-active .hamburger-inner {
+    transform: translate3d(0, 8px, 0) rotate(45deg);
+}
+
+.hamburger--slider.is-active .hamburger-inner::before {
+    transform: rotate(-45deg) translate3d(-5.71429px, -6px, 0);
+    opacity: 0;
+}
+
+.hamburger--slider.is-active .hamburger-inner::after {
+    transform: translate3d(0, -16px, 0) rotate(-90deg);
+}

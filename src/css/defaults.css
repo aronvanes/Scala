@@ -1,0 +1,129 @@
+body {
+    background: #FFFDFD;
+}
+
+.heading {
+    line-height: normal;
+}
+
+.heading:first-letter {
+    text-transform: capitalize;
+}
+
+h1.heading {
+    font-size: 2em;
+    margin-bottom: .8em;
+}
+
+h2.heading {
+    font-size: 1.8em;
+    margin-bottom: .6em;
+}
+
+h3.heading {
+    font-size: 1.6em;
+    margin-bottom: .4em;
+}
+
+h4.heading {
+    font-size: 1.4em;
+    margin-bottom: .2em;
+}
+
+.text {
+    margin-bottom: 1em;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.f-row {
+    flex-direction: row;
+}
+
+.f-column {
+    flex-direction: column;
+}
+
+.f-wrap {
+    flex-wrap: wrap;
+}
+
+.f-wrap.reverse {
+    flex-wrap: wrap-reverse;
+}
+
+.f-between {
+    justify-content: space-between;
+}
+
+.f-evenly {
+    justify-content: space-evenly;
+}
+
+.f-around {
+    justify-content: space-around;
+}
+
+.f-grow {
+    flex-grow: 1;
+}
+
+.f-grow.two {
+    flex-grow: 2;
+}
+
+.f-grow.three {
+    flex-grow: 3;
+}
+
+.f-shrink.zero {
+    flex-shrink: 0;
+}
+.f-shrink.two {
+    flex-shrink: 2;
+}
+.f-shrink.three {
+    flex-shrink: 3;
+}
+
+/* TODO: Change colors to fit brand */
+:root {
+    --primary-color-bright: #EE3235;    /* Scala Red */
+    --primary-color-dark: #2B2E37;      /* Shark */
+    --primary-color-neutral: #545970;   /* Comet */
+    --secondary-color-bright: #FFDA00;  /* Web Orange */
+    --secondary-color-dark: #030D4F;    /* Gulf Blue */
+    --easing: cubic-bezier(0.17, 0.57, 0.38, 0.95);
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+}
+
+[v-cloak] > * { display:none }
+[v-cloak]::before { content: "loading…" }
+
+.resizeLoader {
+    position:fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    background-color: var(--primary-color-dark);
+    opacity: .975;
+    color: #FFF;
+    text-transform: capitalize;
+}

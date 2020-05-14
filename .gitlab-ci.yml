@@ -1,0 +1,118 @@
+image: node:8.15.1
+
+stages:
+  - install
+  - build
+  - build-dev
+  - test
+  - deploy
+  - deploy-dev
+
+install:
+  stage: install
+  script:
+  - npm install
+  - "npm install --no-save git+ssh://git@git.scala.eu/contentful/sc-utils.git"
+  only:
+    - master
+    - dev
+  before_script:
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - eval $(ssh-agent -s)
+  - mkdir -p ~/.ssh
+  - ssh-add <(echo "$SSH_PRIVATE_KEY")
+  - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+  cache:
+    key: node_modules
+    paths:
+    - node_modules/
+
+build:
+  stage: build
+  script:
+  - "apt-get update"
+  - "apt-get install -y -q gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget"
+  - "npm run build"
+  artifacts:
+    paths:
+    - dist/
+    expire_in: 1 week
+  only:
+    - master
+  cache:
+    key: node_modules
+    paths:
+    - node_modules/
+    policy: pull
+
+build-dev:
+  stage: build-dev
+  script:
+  - "apt-get update"
+  - "apt-get install -y -q gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget"
+  - "npm run build:dev"
+  allow_failure: true
+  artifacts:
+    paths:
+    - dist/
+    expire_in: 1 week
+  only:
+    - dev
+  cache:
+    key: node_modules
+    paths:
+    - node_modules/
+    policy: pull
+
+deploy_dev:
+  stage: deploy-dev
+  script:
+  - 'AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} node deployment/delete.js --bucket=${AWS_DEV_BUCKET} --environment=devbuild'
+  - 'AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} node deployment/upload.js --bucket=${AWS_DEV_BUCKET} --environment=devbuild'
+  - 'AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} node deployment/invalidate.js --distribution=${AWS_DEV_DISTRIBUTION_ID} --environment=devbuild'
+  when: manual
+  environment:
+    name: devbuild
+    url: ${ENVIRONMENT_DEV_URL}
+  only:
+  - dev
+  cache:
+    key: node_modules
+    paths:
+    - node_modules/
+    policy: pull
+  
+deploy_staging:
+  stage: deploy
+  script:
+  - 'AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} node deployment/delete.js --bucket=${AWS_STAGING_BUCKET} --environment=staging'
+  - 'AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} node deployment/upload.js --bucket=${AWS_STAGING_BUCKET} --environment=staging'
+  - 'AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} node deployment/invalidate.js --distribution=${AWS_STAGING_DISTRIBUTION_ID} --environment=staging'
+  environment:
+    name: staging
+    url: ${ENVIRONMENT_STAGING_URL}
+  only:
+  - master
+  cache:
+    key: node_modules
+    paths:
+    - node_modules/
+    policy: pull
+
+deploy_prod:
+  stage: deploy
+  script:
+  - 'AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} node deployment/delete.js --bucket=${AWS_PRODUCTION_BUCKET} --environment=production'
+  - 'AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} node deployment/upload.js --bucket=${AWS_PRODUCTION_BUCKET} --environment=production'
+  - 'AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} node deployment/invalidate.js --distribution=${AWS_PRODUCTION_DISTRIBUTION_ID} --environment=production'
+  environment:
+    name: production
+    url: ${ENVIRONMENT_PRODUCTION_URL}
+  when: manual
+  only:
+  - master
+  cache:
+    key: node_modules
+    paths:
+    - node_modules/
+    policy: pull

@@ -1,0 +1,189 @@
+.language-select {
+    width: 100%;
+    color: #2B2E37;
+}
+
+.lang-hero {
+    background-image: url("https://www.scala.nl/wp-content/uploads/2014/09/digital-signage-vending-automaten.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 320px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.lang-hero h1 {
+    margin: 0 auto;
+    font-size: 48px;
+    color: #FFF;
+    font-weight: 600;
+}
+
+.lang-options {
+    display: block;
+    position: relative;
+    height: calc(100% - 100px);
+    margin: 0 auto;
+    width: 80%;
+    border-top: 1px solid #D6D6D6;
+    padding: 24px 0;
+    flex: 1 0 auto;
+}
+
+.lang-option {
+    display: flex;
+    width: 200px;
+    cursor: pointer;
+}
+.lang-option div {
+    align-self: center;
+    margin: 5px;
+}
+
+.lang-option:hover {
+    text-decoration: underline;
+}
+
+.lang-header {
+    margin: 32px auto;
+    font-size: 48px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.country-flag {
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+
+.current-language {
+    display: flex;
+    cursor: pointer;
+}
+
+.current-language div {
+    align-self: center;
+    margin-left: 5px;
+}
+
+.current-language:hover {
+    text-decoration: underline;
+}
+
+.language-prompt {
+    height: 75px;
+    background: #2B2E37;
+    width: 100vw;
+    display: none;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    z-index: 400;
+    font-size: .9em;
+    line-height: 1.2em;
+}
+
+.language-prompt.visible {
+    display: flex;
+}
+
+.language-prompt div {
+    margin: 10px;
+}
+
+.lp-description {
+    word-wrap: break-spaces;
+    max-width: 450px;
+    text-align: left;
+    font-weight: 300;
+}
+
+.lp-select {
+    /* styling */
+    background-color: #545970;
+    color: #FFF;
+    border: thin solid #989898;
+    display: inline-block;
+    font: inherit;
+    /*font-size: initial;*/
+    padding: 0.5em 3.5em 0.5em 1em;
+    outline: none;
+    cursor: pointer;
+
+    /* reset */
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-image:
+            linear-gradient(45deg, transparent 50%, #989898 50%),
+            linear-gradient(135deg, #989898 50%, transparent 50%),
+            linear-gradient(to right, #989898, #989898);
+    background-position:
+            calc(100% - 15px) calc(.75em + 2px),
+            calc(100% - 10px) calc(.75em + 2px),
+            calc(100% - 2.5em) 0.25em;
+    background-size:
+            5px 5px,
+            5px 5px,
+            1px 1.5em;
+    background-repeat: no-repeat;
+}
+
+.lp-button {
+    cursor: pointer;
+    padding: .5em 1em;
+    background: rgba(255,170,0,1);
+    background: -moz-linear-gradient(top, rgba(255,170,0,1) 0%, rgba(222,144,0,1) 75%, rgba(222,144,0,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,170,0,1)), color-stop(64%, rgba(222,144,0,1)), color-stop(100%, rgba(222,144,0,1)));
+    background: -webkit-linear-gradient(top, rgba(255,170,0,1) 0%, rgba(222,144,0,1) 75%, rgba(222,144,0,1) 100%);
+    background: -o-linear-gradient(top, rgba(255,170,0,1) 0%, rgba(222,144,0,1) 75%, rgba(222,144,0,1) 100%);
+    background: -ms-linear-gradient(top, rgba(255,170,0,1) 0%, rgba(222,144,0,1) 75%, rgba(222,144,0,1) 100%);
+    background: linear-gradient(to bottom, rgba(255,170,0,1) 0%, rgba(222,144,0,1) 75%, rgba(222,144,0,1) 100%);
+    position: relative;
+    z-index: 10;
+    text-transform: capitalize;
+}
+
+.lp-button:before {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0; left: 0;
+    z-index: -10;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    background: rgba(255,175,15,1);
+    background: -moz-linear-gradient(top, rgba(255,175,15,1) 0%, rgba(235,152,0,1) 64%, rgba(235,152,0,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,175,15,1)), color-stop(64%, rgba(235,152,0,1)), color-stop(100%, rgba(235,152,0,1)));
+    background: -webkit-linear-gradient(top, rgba(255,175,15,1) 0%, rgba(235,152,0,1) 64%, rgba(235,152,0,1) 100%);
+    background: -o-linear-gradient(top, rgba(255,175,15,1) 0%, rgba(235,152,0,1) 64%, rgba(235,152,0,1) 100%);
+    background: -ms-linear-gradient(top, rgba(255,175,15,1) 0%, rgba(235,152,0,1) 64%, rgba(235,152,0,1) 100%);
+    background: linear-gradient(to bottom, rgba(255,175,15,1) 0%, rgba(235,152,0,1) 64%, rgba(235,152,0,1) 100%);
+}
+
+.lp-button:hover:before{
+    opacity: 1
+}
+
+.lp-close {
+    font-size: 1.4em;
+    cursor: pointer;
+    display: block;
+    opacity: .8;
+    transition: opacity .25s ease;
+}
+
+.lp-close:hover {
+    opacity: 1;
+}

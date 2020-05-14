@@ -1,0 +1,132 @@
+.slide-ltr-enter-active, .slide-ltr-leave-active {
+    transition: all .5s var(--easing);
+}
+.slide-ltr-enter, .slide-ltr-leave-to /* .slide-ltr-leave-active below version 2.1.8 */ {
+    transform: translate(-100px);
+    opacity: 0;
+}
+
+.slide-rtl-enter-active, .slide-rtl-leave-active {
+    opacity: 1;
+    width: 100%;
+    position: relative;
+    transition: all 1s var(--easing);
+}
+.slide-rtl-enter, .slide-rtl-leave-to /* .slide-ltr-leave-active below version 2.1.8 */ {
+    transform: translate(100px);
+    opacity: 0;
+}
+
+/*
+ * FOLD
+ */
+
+.fold-enter-active, .fold-leave-active {
+    transition: all .5s var(--easing);
+    position: relative;
+}
+
+.fold-enter, .fold-leave-to {
+    transform: perspective(600px) translateZ(-150px) rotateX(90deg);
+    height: 0;
+}
+
+/*
+ * SLIDE DOWN
+ */
+.slide-down-enter-active, .slide-down-leave-active {
+    transition: all .5s var(--easing);
+}
+.slide-down-enter, .slide-down-leave-to /* .slide-down-leave-active below version 2.1.8 */ {
+    transform: translateY(-75px);
+    opacity: 0;
+}
+
+/*
+ * SLIDE UP
+ */
+.slide-up-enter-active, .slide-up-leave-active {
+    top: 0;
+    transition: all .5s var(--easing);
+}
+
+.slide-up-enter, .slide-up-leave-to /* .slide-down-leave-active below version 2.1.8 */
+{
+    top: 75px;
+    opacity: 0;
+}
+
+/*
+ * FADE
+ */
+.fade-enter-active, .fade-leave-active {
+    position: relative;
+    transition: opacity .5s var(--easing);
+}
+
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+
+/*
+ TEXT BLOCK ANIMATION
+ */
+
+.text-ltr-enter-active {
+    position: relative;
+    animation: text-ltr-enter .5s var(--easing);
+}
+
+.text-ltr-leave-active {
+    position: absolute;
+    animation: text-ltr-leave .5s var(--easing);
+}
+
+@keyframes text-ltr-enter {
+    0% {
+        transform: translateX(-25%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes text-ltr-leave {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(25%);
+        opacity: 0;
+    }
+}
+
+
+/*
+    General keyframe animations
+ */
+
+@keyframes straightPathOffset {
+    from {opacity: 0}
+    to { stroke-dashoffset: 0; opacity: 1}
+}
+
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.slide-fade-enter-active {
+    transition: all .3s ease;
+}
+
+.slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-enter, .slide-fade-leave-to
+    /* .slide-fade-leave-active below version 2.1.8 */
+{
+    transform: translateX(10px);
+    opacity: 0;
+}

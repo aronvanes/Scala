@@ -1,0 +1,30 @@
+@import url('reset.css');
+@import url('fonts.css');
+@import url('defaults.css');
+@import url('sc-page.css');
+@import url('sc-shared.css');
+@import url('sc-shared-buttons.css');
+@import url('main-menu.css');
+@import url('sc-casestudies.css');
+@import url("sc-footer.css");
+@import url("sc-language-select.css");
+@import url("transitions.css");
+@import url("responsive.css");
+@import url("markup.css");
+@import url("sc-form.css");
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    overflow-x:hidden;
+    font-size: 10px;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    min-height: calc(100% - 175px);
+    padding-bottom: 175px;
+    position: relative;
+    overflow: hidden;
+}

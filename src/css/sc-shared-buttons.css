@@ -1,0 +1,40 @@
+.button {
+    border: 1px solid #fff;
+    padding: .75em 1.5em;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transition-property: text-shadow;
+    transition-duration: 0.5s;
+    transition-timing-function: var(--easing);
+    background: inherit;
+    font-size: inherit;
+}
+
+.button:hover {
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+.button::after {
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    top: 0;
+    bottom: 0;
+    transition-property: left, right, background;
+    transition-duration: 0.5s;
+    transition-timing-function: var(--easing);
+}
+
+.button:hover::after {
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.2);
+}
