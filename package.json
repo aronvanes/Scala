@@ -14,7 +14,7 @@
     "aws-sdk": "^2.448.0",
     "axios": "^0.18.0",
     "intersection-observer": "^0.5.1",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.6",
     "path": "^0.12.7",
     "plyr": "^3.5.4",
     "svg.js": "^2.7.1",
